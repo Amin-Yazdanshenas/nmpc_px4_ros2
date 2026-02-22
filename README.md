@@ -64,15 +64,16 @@ docker build -t nmpc_px4_ros2 .
 3. Launch a container
 ```bash
 xhost +local:docker
-docker run -it --rm \                               
-    -v $(pwd):/workspace/nmpc_px4_ros2_ws/src \
-    -e DISPLAY=$DISPLAY \
-    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-    --env="QT_X11_NO_MITSHM=1" \
-    --privileged \
-    --network=host \
-    --name=nmpc_px4_ros2 \
-    nmpc_px4_ros2
+
+docker run -it --rm \
+-e DISPLAY=$DISPLAY \
+-v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+-e QT_X11_NO_MITSHM=1 \
+--privileged \
+--network=host \
+--name nmpc_px4_ros2 \
+nmpc_px4_ros2
+
 ```
 
 ### Direct Approach
